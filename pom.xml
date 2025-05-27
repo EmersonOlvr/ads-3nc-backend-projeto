@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.uninassau.periodo3.backend</groupId>
-	<artifactId>atv-01</artifactId>
+	<artifactId>projeto-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>atv-01</name>
-	<description>Atividade 01 da cadeira de Back-end Frameworks da faculdade</description>
+	<name>projeto-backend</name>
+	<description>Projeto da cadeira de Back-end Frameworks da faculdade</description>
 	<url/>
 	<licenses>
 		<license/>
