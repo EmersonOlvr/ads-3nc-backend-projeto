@@ -19,7 +19,7 @@ public class ListPetsByNomeAndRacaUseCase {
 
     public List<Pet> execute(String nome, String raca) {
 		log.info(String.format(
-				"Buscando pets com o nome \"%s\" e raca %s...", 
+				"Buscando pets com o nome \"%s\" e raça \"%s\"...", 
 				nome, raca
 		));
 		List<Pet> pets = petsRepository.findByNomeAndRaca(nome, raca);
