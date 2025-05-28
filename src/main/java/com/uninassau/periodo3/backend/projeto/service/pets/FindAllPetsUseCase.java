@@ -1,6 +1,6 @@
 package com.uninassau.periodo3.backend.projeto.service.pets;
 
-import com.uninassau.periodo3.backend.projeto.domain.Pets;
+import com.uninassau.periodo3.backend.projeto.domain.Pet;
 import com.uninassau.periodo3.backend.projeto.repository.PetsRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ public class FindAllPetsUseCase {
     @Autowired
     private PetsRepository petsRepository;
 
-    public List<Pets> execute() {
+    public List<Pet> execute() {
         return petsRepository.findAll();
     }
     

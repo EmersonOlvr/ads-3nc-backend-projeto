@@ -8,6 +8,8 @@ import com.uninassau.periodo3.backend.projeto.service.contato.FindContatoByIdUse
 import com.uninassau.periodo3.backend.projeto.service.contato.UpdateContatoByIdUseCase;
 import com.uninassau.periodo3.backend.projeto.service.contato.dto.ContatoDto;
 
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,26 +37,23 @@ public class ContatoController {
     private DeleteContatoByIdUseCase deleteContatoByIdUseCase;
 
     @PostMapping
-    public ResponseEntity<Contato> create(@RequestBody ContatoDto contatoDto) {
+    public ResponseEntity<Contato> create(@RequestBody @Valid ContatoDto contatoDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(createContatoUseCase.execute(contatoDto));
     }
 
     @GetMapping
     public ResponseEntity<List<Contato>> findAll() {
         List<Contato> contatos = findAllContatosUseCase.execute();
-        return ResponseEntity.status(HttpStatus.OK)
-        					.body(contatos);
+        return ResponseEntity.ok(contatos);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Contato> findById(@PathVariable UUID id) {
-        return findContatoByIdUseCase.execute(id)
-						                .map(ResponseEntity::ok)
-						                .orElse(ResponseEntity.notFound().build());
+        return ResponseEntity.ok(findContatoByIdUseCase.execute(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Contato> update(@PathVariable UUID id, @RequestBody ContatoDto contatoDto) {
+    public ResponseEntity<Contato> update(@PathVariable UUID id, @RequestBody @Valid ContatoDto contatoDto) {
         return updateContatoByIdUseCase.execute(id, contatoDto)
 						                .map(ResponseEntity::ok)
 						                .orElse(ResponseEntity.notFound().build());

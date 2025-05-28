@@ -1,6 +1,6 @@
 package com.uninassau.periodo3.backend.projeto.service.pets;
 
-import com.uninassau.periodo3.backend.projeto.domain.Pets;
+import com.uninassau.periodo3.backend.projeto.domain.Pet;
 import com.uninassau.periodo3.backend.projeto.repository.PetsRepository;
 import com.uninassau.periodo3.backend.projeto.service.pets.dto.PetDto;
 
@@ -14,9 +14,9 @@ public class CreatePetUseCase {
     @Autowired
     private PetsRepository petsRepository;
 
-    public Pets execute(PetDto pet) {
-        Pets newPet = new Pets();
-        BeanUtils.copyProperties(pet, newPet);
+    public Pet execute(PetDto petDto) {
+        Pet newPet = new Pet();
+        BeanUtils.copyProperties(petDto, newPet);
 
         return petsRepository.save(newPet);
     }
