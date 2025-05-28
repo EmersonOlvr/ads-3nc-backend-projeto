@@ -11,14 +11,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class CreateContatoUseCase {
 
-    @Autowired
-    private ContatoRepository contatoRepository;
+	@Autowired
+	private ContatoRepository contatoRepository;
 
-    public Contato execute(ContatoDto contatoDto) {
-        Contato newContato = new Contato();
-        BeanUtils.copyProperties(contatoDto, newContato);
+	public Contato execute(ContatoDto contatoDto) {
+		Contato newContato = new Contato();
+		BeanUtils.copyProperties(contatoDto, newContato);
 
-        return contatoRepository.save(newContato);
-    }
-    
+		return contatoRepository.save(newContato);
+	}
+	
 }

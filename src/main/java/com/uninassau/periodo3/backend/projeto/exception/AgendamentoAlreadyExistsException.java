@@ -9,7 +9,7 @@ public class AgendamentoAlreadyExistsException extends RuntimeException {
 	private static final long serialVersionUID = 7713061241938198811L;
 
 	public AgendamentoAlreadyExistsException() {
-		super("Já existe um agendamento para o dia e horário informado, informe outra data/hora.");
+		super("Já existe um agendamento para o dia e horário informado, informe outra data.");
 	}
 
 }

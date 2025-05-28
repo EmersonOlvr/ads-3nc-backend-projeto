@@ -13,15 +13,15 @@ import java.util.UUID;
 @Service
 public class UpdatePetByIdUseCase {
 
-    @Autowired
-    private PetsRepository petsRepository;
+	@Autowired
+	private PetsRepository petsRepository;
 
-    public Optional<Pet> execute(UUID id, PetDto attPet) {
-        return petsRepository.findById(id).map(petExistente -> {
-            BeanUtils.copyProperties(attPet, petExistente, "id");
+	public Optional<Pet> execute(UUID id, PetDto attPet) {
+		return petsRepository.findById(id).map(petExistente -> {
+			BeanUtils.copyProperties(attPet, petExistente, "id");
 
-            return petsRepository.save(petExistente);
-        });
-    }
-    
+			return petsRepository.save(petExistente);
+		});
+	}
+	
 }

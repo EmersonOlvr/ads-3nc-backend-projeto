@@ -6,9 +6,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record AgendamentoDto(
-        @NotBlank String nome,
-        @NotBlank String email,
-        @NotBlank String telefone,
-        @NotNull LocalDateTime data
+		@NotBlank String nome,
+		@NotBlank String email,
+		@NotBlank String telefone,
+		@NotNull LocalDateTime data
 ) {
 }

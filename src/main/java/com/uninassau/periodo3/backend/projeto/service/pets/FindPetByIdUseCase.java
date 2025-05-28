@@ -12,12 +12,12 @@ import com.uninassau.periodo3.backend.projeto.repository.PetsRepository;
 @Service
 public class FindPetByIdUseCase {
 
-    @Autowired
-    private PetsRepository petsRepository;
+	@Autowired
+	private PetsRepository petsRepository;
 
-    public Pet execute(UUID id) {
-        return petsRepository.findById(id)
-        					.orElseThrow(PetNotFoundByIdException::new);
-    }
-    
+	public Pet execute(UUID id) {
+		return petsRepository.findById(id)
+							.orElseThrow(PetNotFoundByIdException::new);
+	}
+	
 }

@@ -10,29 +10,29 @@ import java.util.UUID;
 @Data
 public class Pet {
 	
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private UUID id;
 
-    @Column(nullable = false, length = 150)
-    private String nome;
+	@Column(nullable = false, length = 150)
+	private String nome;
 
-    @Column(nullable = false, length = 50)
-    private String especie;
+	@Column(nullable = false, length = 50)
+	private String especie;
 
-    @Column(nullable = false, length = 100)
-    private String raca;
+	@Column(nullable = false, length = 100)
+	private String raca;
 
-    @Column(nullable = false)
-    private LocalDate dataNascimento;
+	@Column(nullable = false)
+	private LocalDate dataNascimento;
 
-    @Column
-    private Boolean adotado = false;
+	@Column
+	private Boolean adotado = false;
 
-    @Column(length = 255)
-    private String descricao;
+	@Column(length = 255)
+	private String descricao;
 
-    @Column
-    private String fotoUrl;
-    
+	@Column
+	private String fotoUrl;
+	
 }

@@ -11,11 +11,11 @@ import java.util.List;
 @Service
 public class FindAllContatosUseCase {
 
-    @Autowired
-    private ContatoRepository contatoRepository;
+	@Autowired
+	private ContatoRepository contatoRepository;
 
-    public List<Contato> execute() {
-        return contatoRepository.findAll();
-    }
-    
+	public List<Contato> execute() {
+		return contatoRepository.findAll();
+	}
+	
 }

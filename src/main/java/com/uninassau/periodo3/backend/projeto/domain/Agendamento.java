@@ -16,20 +16,20 @@ import lombok.Data;
 @Data
 public class Agendamento {
 	
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private UUID id;
 
-    @Column(nullable = false, length = 150)
-    private String nome;
+	@Column(nullable = false, length = 150)
+	private String nome;
 
-    @Column(nullable = false, length = 150)
-    private String email;
+	@Column(nullable = false, length = 150)
+	private String email;
 
-    @Column(nullable = false)
-    private LocalDateTime data;
+	@Column(nullable = false)
+	private LocalDateTime data;
 
-    @Column(nullable = false, length = 14)
-    private String telefone;
-    
+	@Column(nullable = false, length = 14)
+	private String telefone;
+	
 }

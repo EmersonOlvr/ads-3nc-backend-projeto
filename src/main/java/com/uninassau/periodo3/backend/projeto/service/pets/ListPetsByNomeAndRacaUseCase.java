@@ -14,10 +14,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ListPetsByNomeAndRacaUseCase {
 
-    @Autowired
-    private PetsRepository petsRepository;
+	@Autowired
+	private PetsRepository petsRepository;
 
-    public List<Pet> execute(String nome, String raca) {
+	public List<Pet> execute(String nome, String raca) {
 		log.info(String.format(
 				"Buscando pets com o nome \"%s\" e raça \"%s\"...", 
 				nome, raca
@@ -25,7 +25,7 @@ public class ListPetsByNomeAndRacaUseCase {
 		List<Pet> pets = petsRepository.findByNomeAndRaca(nome, raca);
 		log.info(String.format("%s pet(s) encontrado(s)", pets.size()));
 		
-        return pets;
-    }
-    
+		return pets;
+	}
+	
 }

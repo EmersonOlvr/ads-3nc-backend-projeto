@@ -10,11 +10,11 @@ import java.util.UUID;
 @Service
 public class DeleteContatoByIdUseCase {
 
-    @Autowired
-    private ContatoRepository contatoRepository;
+	@Autowired
+	private ContatoRepository contatoRepository;
 
-    public void execute(UUID id) {
-        contatoRepository.deleteById(id);
-    }
-    
+	public void execute(UUID id) {
+		contatoRepository.deleteById(id);
+	}
+	
 }

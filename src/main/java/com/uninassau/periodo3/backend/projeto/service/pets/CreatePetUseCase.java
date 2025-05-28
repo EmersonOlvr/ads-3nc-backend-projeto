@@ -11,14 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Service
 public class CreatePetUseCase {
 
-    @Autowired
-    private PetsRepository petsRepository;
+	@Autowired
+	private PetsRepository petsRepository;
 
-    public Pet execute(PetDto petDto) {
-        Pet newPet = new Pet();
-        BeanUtils.copyProperties(petDto, newPet);
+	public Pet execute(PetDto petDto) {
+		Pet newPet = new Pet();
+		BeanUtils.copyProperties(petDto, newPet);
 
-        return petsRepository.save(newPet);
-    }
-    
+		return petsRepository.save(newPet);
+	}
+	
 }

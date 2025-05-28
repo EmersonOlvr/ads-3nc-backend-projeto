@@ -10,17 +10,17 @@ import java.util.UUID;
 @Data
 public class Contato {
 	
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private UUID id;
 
-    @Column(nullable = false, length = 150)
-    private String nome;
+	@Column(nullable = false, length = 150)
+	private String nome;
 
-    @Column(nullable = false, length = 150)
-    private String email;
+	@Column(nullable = false, length = 150)
+	private String email;
 
-    @Column(nullable = false, length = 255)
-    private String mensagem;
-    
+	@Column(nullable = false, length = 255)
+	private String mensagem;
+	
 }

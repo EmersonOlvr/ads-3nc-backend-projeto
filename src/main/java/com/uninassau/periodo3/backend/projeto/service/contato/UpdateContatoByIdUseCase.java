@@ -14,15 +14,15 @@ import java.util.UUID;
 @Service
 public class UpdateContatoByIdUseCase {
 
-    @Autowired
-    private ContatoRepository contatoRepository;
+	@Autowired
+	private ContatoRepository contatoRepository;
 
-    public Optional<Contato> execute(UUID id, ContatoDto attContato) {
-        return contatoRepository.findById(id).map(contatoExistente -> {
-            BeanUtils.copyProperties(attContato, contatoExistente, "id");
+	public Optional<Contato> execute(UUID id, ContatoDto attContato) {
+		return contatoRepository.findById(id).map(contatoExistente -> {
+			BeanUtils.copyProperties(attContato, contatoExistente, "id");
 
-            return contatoRepository.save(contatoExistente);
-        });
-    }
-    
+			return contatoRepository.save(contatoExistente);
+		});
+	}
+	
 }

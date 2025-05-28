@@ -2,13 +2,19 @@ package com.uninassau.periodo3.backend.projeto.exception;
 
 import java.time.Instant;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.servlet.http.HttpServletRequest;
@@ -91,6 +97,59 @@ public class ValidationHandler {
 		);
 
 		return ResponseEntity.badRequest().body(response);
+	}
+	
+	@ExceptionHandler(NoResourceFoundException.class)
+	public final ResponseEntity<Object> handleNoHandleFoundExceptions(NoResourceFoundException ex, WebRequest request) {
+		LinkedHashMap<String, Object> extra = new LinkedHashMap<>();
+		extra.put("description", ex.getMessage());
+		
+		ErrorResponse response = new ErrorResponse(
+				Instant.now(),
+				ex.getStatusCode().value(), 
+				ex.getBody().getTitle(),
+				"O endpoint solicitado não existe.", 
+				request.getDescription(false).substring(4)
+		);
+
+		return ResponseEntity.status(ex.getStatusCode().value())
+							.body(response);
+	}
+	
+	@ExceptionHandler(ResponseStatusException.class)
+	public final ResponseEntity<Object> handleResponseStatusExceptions(ResponseStatusException ex, WebRequest request) {
+		ErrorResponse response = new ErrorResponse(
+				Instant.now(),
+				ex.getStatusCode().value(),
+				ex.getBody().getTitle(),
+				ex.getReason(),
+				request.getDescription(false).substring(4)
+		);
+		
+		return ResponseEntity.status(ex.getStatusCode().value())
+							.body(response);
+	}
+	
+	@ExceptionHandler(value = { Exception.class, RuntimeException.class })
+	public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
+		HttpStatus status = this.determineHttpStatus(ex);
+		ex.printStackTrace();
+		
+		ErrorResponse response = new ErrorResponse(
+				Instant.now(),
+				status.value(), 
+				status.getReasonPhrase(),
+				ex.getMessage(), 
+				request.getDescription(false).substring(4)
+		);
+		
+		return ResponseEntity.status(status.value())
+							.body(response);
+	}
+
+	private HttpStatus determineHttpStatus(Exception ex) {
+		ResponseStatus annotation = AnnotationUtils.findAnnotation(ex.getClass(), ResponseStatus.class);
+		return (annotation != null) ? annotation.code() : HttpStatus.INTERNAL_SERVER_ERROR;
 	}
 	
 }

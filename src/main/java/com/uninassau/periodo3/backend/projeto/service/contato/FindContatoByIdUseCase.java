@@ -12,12 +12,12 @@ import com.uninassau.periodo3.backend.projeto.repository.ContatoRepository;
 @Service
 public class FindContatoByIdUseCase {
 
-    @Autowired
-    private ContatoRepository contatoRepository;
+	@Autowired
+	private ContatoRepository contatoRepository;
 
-    public Contato execute(UUID id) {
-        return contatoRepository.findById(id)
-        						.orElseThrow(ContatoNotFoundByIdException::new);
-    }
-    
+	public Contato execute(UUID id) {
+		return contatoRepository.findById(id)
+								.orElseThrow(ContatoNotFoundByIdException::new);
+	}
+	
 }

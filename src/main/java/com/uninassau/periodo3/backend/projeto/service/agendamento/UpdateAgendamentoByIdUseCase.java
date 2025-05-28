@@ -14,14 +14,14 @@ import java.util.UUID;
 @Service
 public class UpdateAgendamentoByIdUseCase {
 
-    @Autowired
-    private AgendamentoRepository agendamentoRepository;
+	@Autowired
+	private AgendamentoRepository agendamentoRepository;
 
-    public Optional<Agendamento> execute(UUID id, AgendamentoDto attAgendamento) {
-        return agendamentoRepository.findById(id).map(agendamentoExistente -> {
-            BeanUtils.copyProperties(attAgendamento, agendamentoExistente, "id");
+	public Optional<Agendamento> execute(UUID id, AgendamentoDto attAgendamento) {
+		return agendamentoRepository.findById(id).map(agendamentoExistente -> {
+			BeanUtils.copyProperties(attAgendamento, agendamentoExistente, "id");
 
-            return agendamentoRepository.save(agendamentoExistente);
-        });
-    }
+			return agendamentoRepository.save(agendamentoExistente);
+		});
+	}
 }

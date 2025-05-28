@@ -5,11 +5,11 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public record PetDto(
-        @NotBlank String nome,
-        @NotBlank String especie,
-        @NotBlank String raca,
-        @NotNull LocalDate dataNascimento,
-        @NotBlank String descricao,
-        @NotBlank String foto_url
-        ) {
+		@NotBlank String nome,
+		@NotBlank String especie,
+		@NotBlank String raca,
+		@NotNull LocalDate dataNascimento,
+		@NotBlank String descricao,
+		@NotBlank String foto_url
+		) {
 }

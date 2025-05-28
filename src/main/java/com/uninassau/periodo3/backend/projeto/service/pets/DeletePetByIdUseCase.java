@@ -10,11 +10,11 @@ import java.util.UUID;
 @Service
 public class DeletePetByIdUseCase {
 
-    @Autowired
-    private PetsRepository petsRepository;
+	@Autowired
+	private PetsRepository petsRepository;
 
-    public void execute(UUID id) {
-        petsRepository.deleteById(id);
-    }
-    
+	public void execute(UUID id) {
+		petsRepository.deleteById(id);
+	}
+	
 }

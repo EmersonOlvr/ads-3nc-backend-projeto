@@ -17,20 +17,19 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CreateAgendamendoUseCase {
 
-    @Autowired
-    private AgendamentoRepository agendamentoRepository;
+	@Autowired
+	private AgendamentoRepository agendamentoRepository;
 
-    public Agendamento execute(AgendamentoDto agendamentoDto) {
-    	LocalDateTime startDate = agendamentoDto.data();
-    	LocalDateTime endDate = startDate.plusMinutes(30);
-    	
-    	log.info("Verificando se o horário está disponível para agendamento...");
-    	if (agendamentoRepository.existsByDataBetween(startDate, endDate))
-    		throw new AgendamentoAlreadyExistsException();
-    	
-        Agendamento newAgendamento = new Agendamento();
-        BeanUtils.copyProperties(agendamentoDto, newAgendamento);
+	public Agendamento execute(AgendamentoDto agendamentoDto) {
+		LocalDateTime data = agendamentoDto.data().withSecond(0).withNano(0);
+		
+		log.info("Verificando se o horário está disponível para agendamento...");
+		if (agendamentoRepository.existsByData(data))
+			throw new AgendamentoAlreadyExistsException();
+		
+		Agendamento newAgendamento = new Agendamento();
+		BeanUtils.copyProperties(agendamentoDto, newAgendamento);
 
-        return agendamentoRepository.save(newAgendamento);
-    }
+		return agendamentoRepository.save(newAgendamento);
+	}
 }

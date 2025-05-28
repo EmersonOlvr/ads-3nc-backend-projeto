@@ -10,11 +10,11 @@ import java.util.List;
 @Service
 public class FindAllPetsUseCase {
 
-    @Autowired
-    private PetsRepository petsRepository;
+	@Autowired
+	private PetsRepository petsRepository;
 
-    public List<Pet> execute() {
-        return petsRepository.findAll();
-    }
-    
+	public List<Pet> execute() {
+		return petsRepository.findAll();
+	}
+	
 }
