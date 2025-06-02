@@ -10,6 +10,6 @@ public record PetDto(
 		@NotBlank String raca,
 		@NotNull LocalDate dataNascimento,
 		@NotBlank String descricao,
-		@NotBlank String foto_url
-		) {
+		@NotBlank String fotoUrl
+) {
 }
